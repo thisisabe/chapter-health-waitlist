@@ -1,3 +1,4 @@
+'use client'
 import WaitlistForm from '../components/WaitlistForm'
 import PrivacyPolicyModal from '../components/PrivacyPolicyModal'
 
