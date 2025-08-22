@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+
 export default function WaitlistForm() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle')
