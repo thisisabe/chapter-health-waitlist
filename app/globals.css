@@ -1,0 +1,162 @@
+/* Global styles and brand definitions */
+
+@font-face {
+  font-family: "National 2 Narrow";
+  src: url("/fonts/national-2-narrow-medium.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Mori";
+  src: url("/fonts/PPMori-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PP Mori";
+  src: url("/fonts/PPMori-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Define CSS variables for easy reference in Tailwind */
+:root {
+  --font-heading: "National 2 Narrow", system-ui, sans-serif;
+  --font-body: "PP Mori", system-ui, sans-serif;
+}
+
+/* Reset basic elements */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #18051E;
+  color: #E8CDFF;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin: 0;
+}
+
+/* Hero background cross fade */
+.hero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Each slide fades in and out over a 12 second cycle.  Update the
+   nth-child selectors and keyframes duration if you add more images. */
+.hero-bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: heroFade 12s infinite;
+}
+
+/* Adjust delays for the number of images present.  Two images use a 6s phase shift. */
+.hero-bg img:nth-child(1) { animation-delay: 0s; }
+.hero-bg img:nth-child(2) { animation-delay: 6s; }
+
+@keyframes heroFade {
+  0%, 40% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Form styles */
+input[type="email"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #E8CDFF;
+}
+
+input[type="email"]::placeholder {
+  color: rgba(232, 205, 255, 0.6);
+}
+
+button[type="submit"] {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  background-color: #FF482C;
+  color: #18051E;
+  transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #e93d24;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-container {
+  background-color: #1F0A26;
+  border: 1px solid rgba(232, 205, 255, 0.15);
+  border-radius: 1rem;
+  max-width: 36rem;
+  width: 100%;
+  color: #E8CDFF;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(232, 205, 255, 0.15);
+}
+
+.modal-content {
+  padding: 1rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1rem;
+  border-top: 1px solid rgba(232, 205, 255, 0.15);
+  display: flex;
+  justify-content: flex-end;
+}
